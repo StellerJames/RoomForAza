@@ -1,0 +1,47 @@
+/* Color Palette
+Elderberry #292449;
+Old Mauve #6e3850;
+Rialto #8d4e59;
+Old Lavender #805978;
+Puddle Jumper #6c848d;
+Pink Manhattan #c2707d;
+Gremlin #9fa05e;
+Antique Gold #b49d61;
+Coyote #d99770;
+Tumbleweed #e0ae92;
+Apricot #eabc74;
+Bisque #ffe6c6;*/
+
+/* Elderberry page behind the room, no default margin */
+body {
+    margin: 0;
+    background: #292449;
+}
+
+/* the room box: full width, but never bigger than 4x, centered */
+
+.room {
+    position: relative;
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+/* keeps each image's pixels sharp when scaled */
+.room img {
+    image-rendering: pixelated;
+}
+
+.room-bg {
+    display: block;
+    width: 100%;    
+}
+
+/* turns room pixels into percentages of the overall room box */
+.sprite {
+    position: absolute;
+    left: calc(var(--x) / 256 * 100%);
+    top: calc(var(--y) / 144 * 100%);
+    width: calc(var(--w) / 256 * 100%);
+}
+
