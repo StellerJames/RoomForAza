@@ -1,20 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Room for Aza</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-   <main class="room">
-    <img class="room-bg" src="assets/room-static.png" alt="A cozy pixel art living room with a desk, a sofa, a sleeping cat, plants, and wall art"> 
+    <main class="room">
+        <img class="room-bg" src="assets/room-static.png"
+            alt="A cozy pixel art living room with a desk, a sofa, a sleeping cat, plants, and wall art">
 
-    <img class="sprite" src="assets/character-idle.gif" alt="" style="--x: 78; --y: 71; --w: 13;">
+        <img class="sprite" src="assets/character-idle.gif" alt="" style="--x: 78; --y: 71; --w: 13;">
 
-    <img class="sprite" src="assets/cat-sleep.gif" alt="" style="--x: 164; --y: 34; --w: 11;">
+        <img class="sprite" src="assets/cat-sleep.gif" alt="" style="--x: 164; --y: 34; --w: 11;">
 
-    <img class="sprite" src="assets/mug-steam.gif" alt="" style="--x: 14; --y: 63; --w: 7;">
-   </main>
+        <img class="sprite" src="assets/mug-steam.gif" alt="" style="--x: 14; --y: 63; --w: 7;">
+
+        <button class="hotspot" data-object="character" aria-label="Aza"
+            style="--x: 78; --y: 71; --w: 13; --h: 19;"></button>
+
+        <button class="hotspot" data-object="computer" aria-label="Aza's Computer"
+            style="--x: 22; --y: 58; --w: 18; --h: 18;"></button>
+
+        <button class="hotspot" data-object="cat" aria-label="Aza's cat"
+            style="--x: 162; --y: 33; --w: 15; --h: 15;"></button>
+
+        <button class="hotspot" data-object="painting" aria-label="A painting of a Steller's Jay"
+            style="--x: 76; --y: 14; --w: 18; --h: 18;"></button>
+
+
+        <button class="hotspot" data-object="cactus" aria-label="A cowboy cactus"
+            style="--x: 128; --y: 12; --w: 17; --h: 37;"></button>
+
+        <button class="hotspot" data-object="diploma" aria-label="Aza's diploma"
+            style="--x: 15; --y: 46; --w: 15; --h: 12;"></button>
+
+    </main>
 </body>
+
 </html>

@@ -16,6 +16,7 @@ Bisque #ffe6c6;*/
 body {
     margin: 0;
     background: #292449;
+    font-family: "Press Start 2P", monospace;
 }
 
 /* the room box: full width, but never bigger than 4x, centered */
@@ -34,7 +35,7 @@ body {
 
 .room-bg {
     display: block;
-    width: 100%;    
+    width: 100%;
 }
 
 /* turns room pixels into percentages of the overall room box */
@@ -45,3 +46,15 @@ body {
     width: calc(var(--w) / 256 * 100%);
 }
 
+/* clickable areas over objects, uses the same pixel mapping as the sprites */
+.hotspot {
+    position: absolute;
+    left: calc(var(--x) / 256 * 100%);
+    top: calc(var(--y) / 144 * 100%);
+    width: calc(var(--w) / 256 * 100%);
+    height: calc(var(--h) / 144 * 100%);
+    padding: 0;
+    background: transparent;
+    border: 2px dashed #eabc74; /* temporary so it's visible (replace w/focus-visible later) */
+    cursor: pointer;
+}
