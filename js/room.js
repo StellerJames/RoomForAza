@@ -13,7 +13,9 @@ const dialog = {
     cactus: ["A healthy-looking Cowboy Cactus. Its soil looks dry, just like it likes."],
     pearls: ["A stylish String of Pearls sits near the window. It looks like it was placed here purely for the vibes."],
     syngonium: ["A bushy Syngonium batik plant. One of the lower leaves has a suspiciously tiny bite mark on it..."],
-    bookshelf: ["Mostly books about coding and houseplants."],
+    bookshelf: ["Mostly books about visual art and houseplants."],
+    minishelf: [
+        "A small shelf of well-loved books. A dog-eared copy of Eloquent JavaScript sits in the middle."],
     diploma: ["It’s Aza’s BFA in art education from Weber State University!"]
 };
 
