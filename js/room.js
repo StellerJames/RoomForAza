@@ -19,8 +19,6 @@ const dialog = {
 
 //Find page elements, check user's motion settings.
 
-const dialogText = document.querySelector(".dialog-text");
-
 const shownText = document.querySelector(".dialog-shown");
 const restText = document.querySelector(".dialog-rest");
 
@@ -63,7 +61,7 @@ function say(text) {
 // Clicking the dialog box while a line is typing shows all of it.
 document.querySelector(".dialog").addEventListener("click", () => {
     clearInterval(typingTimer);
-    dialogText.textContent = fullText;
+   shownText.textContent = fullText;
     restText.textContent = "";
 });
 
