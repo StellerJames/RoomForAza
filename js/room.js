@@ -17,14 +17,24 @@ const dialog = {
     diploma: ["It’s Aza’s BFA in art education from Weber State University!"]
 };
 
-//Find page elements, check user's motion settings.
-
+//Page Elements
+//Dialog Box
 const shownText = document.querySelector(".dialog-shown");
 const restText = document.querySelector(".dialog-rest");
-
 const dialogLive = document.querySelector(".sr-only");
 
+//Sprites
 const characterSprite = document.querySelector("#character-sprite");
+
+//Desktop
+const boot = document.querySelector(".boot");
+const desktop = document.querySelector(".desktop");
+const startButton = document.querySelector(".start-button");
+const startMenu = document.querySelector(".start-menu");
+const computerButton = document.querySelector('[data-object="computer"]');
+
+const dialupSound = new Audio("assets/dialup.mp3");
+dialupSound.volume = 0.3;   // 0 = silent, 1 = full volume
 
 // True if user asks for less motion
 const reduceMotion = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
@@ -39,7 +49,7 @@ function say(text) {
     fullText = text;
     dialogLive.textContent = text;  //screen readers get full line instantly
 
-        if (reduceMotion) {
+    if (reduceMotion) {
         shownText.textContent = text;
         restText.textContent = "";
         return;
@@ -61,7 +71,7 @@ function say(text) {
 // Clicking the dialog box while a line is typing shows all of it.
 document.querySelector(".dialog").addEventListener("click", () => {
     clearInterval(typingTimer);
-   shownText.textContent = fullText;
+    shownText.textContent = fullText;
     restText.textContent = "";
 });
 
@@ -74,7 +84,7 @@ function bobbing() {
 }
 
 // Which line each object shows next. Starts empty.
-const followingDialog ={};
+const followingDialog = {};
 
 document.querySelectorAll(".hotspot").forEach((button) => {
     button.addEventListener("click", () => {
@@ -88,9 +98,41 @@ document.querySelectorAll(".hotspot").forEach((button) => {
 
         if (name === "character") {
             bobbing();
+        } else if (name === "computer") {
+            setTimeout(bootUp, 1500);
         }
     });
 });
 
 // Greet visitor on open
 say(greeting);
+
+// Shows the boot screen with the dial-up sound. Desktop then opens.
+function bootUp() {
+    boot.hidden = false;
+    dialupSound.currentTime = 0;              // start the sound from the beginning
+    dialupSound.play().catch(() => { });       // if a browser blocks sound, boot anyway
+
+    setTimeout(() => {
+        boot.hidden = true;
+        desktop.hidden = false;
+        document.querySelector(".desktop-icon").focus(); // keyboard users land on the desktop
+    }, reduceMotion ? 300 : 3000);
+}
+
+// Closes the desktop and returns to the room.
+function shutDown() {
+    dialupSound.pause();
+    startMenu.hidden = true;
+    startButton.setAttribute("aria-expanded", "false");
+    desktop.hidden = true;
+    computerButton.focus(); // keyboard users land back on the computer
+    say("Aza's computer is off. Click it anytime to log back on.");
+}
+
+// Start toggles menu. Shut Down goes back to the room.
+startButton.addEventListener("click", () => {
+    startMenu.hidden = !startMenu.hidden;
+    startButton.setAttribute("aria-expanded", String(!startMenu.hidden));
+});
+document.querySelector(".shutdown-button").addEventListener("click", shutDown);

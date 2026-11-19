@@ -68,6 +68,7 @@
 
 <!-- the computer's desktop, full screen -->
 <div class="desktop" hidden>
+    <!-- Icons -->
     <div class="desktop-icons">
         <button class="desktop-icon" data-window="perch">Perch</button>
         <button class="desktop-icon" data-window="diogo">Diogo Shoes</button>
@@ -85,9 +86,13 @@
             <p>Perch project details go here.</p>
         </div>
     </div>
-
+<!-- Start Menu -->
+    <div class="start-menu window" hidden>
+    <button class="shutdown-button">Shut Down...</button>
+</div>
+<!-- Taskbar -->
     <div class="taskbar">
-        <button class="start-button">Start</button>
+        <button class="start-button" aria-expanded="false">Start</button>
     </div>
 </div>
 </body>
