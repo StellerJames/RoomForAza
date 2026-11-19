@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/98.css@0.1.21/dist/98.css"> <!-- Windows98 stylesheet from jdan.github.io/98.css -->
     <link rel="stylesheet" href="css/style.css">
     <script src="js/room.js" defer></script>
 </head>
@@ -54,11 +55,41 @@
                 style="--x: 15; --y: 46; --w: 15; --h: 12;"></button>
         </main>
         <section class="dialog">
-            <p class="dialog-text" aria-hidden="true"><span class="dialog-shown"></span><span class="dialog-rest"></span></p>
+            <p class="dialog-text" aria-hidden="true"><span class="dialog-shown"></span><span
+                    class="dialog-rest"></span></p>
             <p class="sr-only" aria-live="polite"></p>
             <span class="dialog-arrow" aria-hidden="true">▼</span>
         </section>
     </div>
+    <!-- Boot Screen -->
+<div class="boot" hidden>
+    <p>Connecting…</p>
+</div>
+
+<!-- the computer's desktop, full screen -->
+<div class="desktop" hidden>
+    <div class="desktop-icons">
+        <button class="desktop-icon" data-window="perch">Perch</button>
+        <button class="desktop-icon" data-window="diogo">Diogo Shoes</button>
+        <button class="desktop-icon" data-window="helpdesk">Help Desk</button>
+    </div>
+
+    <div class="window" id="window-perch" hidden>
+        <div class="title-bar">
+            <div class="title-bar-text">Perch</div>
+            <div class="title-bar-controls">
+                <button aria-label="Close" class="close-window"></button>
+            </div>
+        </div>
+        <div class="window-body">
+            <p>Perch project details go here.</p>
+        </div>
+    </div>
+
+    <div class="taskbar">
+        <button class="start-button">Start</button>
+    </div>
+</div>
 </body>
 
 </html>

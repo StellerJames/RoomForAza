@@ -1,21 +1,38 @@
-/* Color Palette
-Elderberry #292449;
-Old Mauve #6e3850;
-Rialto #8d4e59;
-Old Lavender #805978;
-Puddle Jumper #6c848d;
-Pink Manhattan #c2707d;
-Gremlin #9fa05e;
-Antique Gold #b49d61;
-Coyote #d99770;
-Tumbleweed #e0ae92;
-Apricot #eabc74;
-Bisque #ffe6c6;*/
+:root {
+    /* Anthill palette */
+    --elderberry: #292449;
+    --old-mauve: #6e3850;
+    --rialto: #8d4e59;
+    --old-lavender: #805978;
+    --puddle-jumper: #6c848d;
+    --pink-manhattan: #c2707d;
+    --gremlin: #9fa05e;
+    --antique-gold: #b49d61;
+    --coyote: #d99770;
+    --tumbleweed: #e0ae92;
+    --apricot: #eabc74;
+    --bisque: #ffe6c6;
+
+    /* 98.css reads these names, so they point at the palette */
+    --surface: var(--bisque);
+    --button-face: var(--bisque);
+    --button-highlight: #ffffff;
+    /* white bevel edge, the only non-palette color */
+    --button-shadow: var(--coyote);
+    --window-frame: var(--elderberry);
+    --dialog-blue: var(--elderberry);
+    --dialog-blue-light: var(--old-lavender);
+    --dialog-gray: var(--puddle-jumper);
+    --dialog-gray-light: var(--gremlin);
+    --link-blue: var(--old-mauve);
+    --text-color: var(--elderberry);
+}
+
 
 /* Elderberry page behind the room, no default margin */
 body {
     margin: 0;
-    background: #292449;
+    background: var(--elderberry);
     font-family: "Press Start 2P", monospace;
 }
 
@@ -52,9 +69,15 @@ body {
     height: calc(var(--h) / 144 * 100%);
     padding: 0;
     background: transparent;
-    border: 2px dashed #eabc74;
+    border: 2px dashed vaar(--apricot);
     /* temporary so it's visible (replace w/focus-visible later) */
     cursor: pointer;
+    /* Windows 98 */
+    min-width: 0;
+    /* 98.css gives buttons a minimum size */
+    min-height: 0;
+    box-shadow: none;
+    /* ...and a 3D bevel */
 }
 
 /* Stylized pixel dialog box underneath the room */
@@ -67,10 +90,10 @@ body {
     max-width: 1024px;
     margin: 16px auto;
     padding: 20px 24px;
-    background: #ffe6c6;
-    color: #292449;
-    border: 4px solid #292449;
-    box-shadow: inset 0 0 0 4px #ffe6c6, inset 0 0 0 7px #8d4e59;
+    background: var(--bisque);
+    color: var(--elderberry);
+    border: 4px solid (--elderberry);
+    box-shadow: inset 0 0 0 4px var(--bisque), inset 0 0 0 7px var(--rialto);
     font-size: 16px;
     /* Press Start 2P stays crisp at multiples of 8 */
     line-height: 1.75;
@@ -116,4 +139,76 @@ body {
     overflow: hidden;
     clip-path: inset(50%);
     white-space: nowrap;
+}
+
+/* hidden attribute always wins over display rules below */
+[hidden] {
+    display: none !important;
+}
+
+/* Boot Screen */
+.boot {
+    position: fixed;
+    inset: 0;
+    /* top, right, bottom, left: 0 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--elderberry);
+    color: var(--bisque);
+    font-size: 16px;
+}
+
+/* desktop covers the whole screen */
+.desktop {
+    position: fixed;
+    inset: 0;
+    background: var(--puddle-jumper);
+    /* slate from color palette, closest to classic teal */
+    font-family: "Pixelated MS Sans Serif", Arial, sans-serif;
+    /* 98.css's font */
+}
+
+.desktop-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+}
+
+/* desktop icons: plain text for now */
+.desktop-icon {
+    min-width: 0;
+    box-shadow: none;
+    background: transparent;
+    color: var(--bisque);
+    padding: 4px;
+}
+
+/* windows open centered + scroll for content outside of initial screen */
+.desktop .window {
+    position: absolute;
+    top: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(560px, 92vw);
+    max-height: calc(100dvh - 120px);
+    overflow: auto;
+}
+
+/* gray taskbar along the bottom*/
+.taskbar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 3px;
+    background: var(--surface);
+    box-shadow: inset 0 1px var(--bisque);
+}
+
+.start-button {
+    font-weight: bold;
+    background: var(--surface);
 }
