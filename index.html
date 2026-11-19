@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/room.js" defer></script>
 </head>
 
 <body>
@@ -17,7 +18,8 @@
             <img class="room-bg" src="assets/room-static.png"
                 alt="A cozy pixel art living room with a desk, a sofa, a sleeping cat, plants, and wall art">
 
-            <img class="sprite" src="assets/character-idle.gif" alt="" style="--x: 78; --y: 71; --w: 13;">
+            <img class="sprite" id="character-sprite" src="assets/character-idle.gif" alt=""
+                style="--x: 78; --y: 71; --w: 13;">
 
             <img class="sprite" src="assets/cat-sleep.gif" alt="" style="--x: 164; --y: 34; --w: 11;">
 
@@ -29,10 +31,13 @@
             <button class="hotspot" data-object="computer" aria-label="Aza's Computer"
                 style="--x: 22; --y: 58; --w: 18; --h: 18;"></button>
 
+            <button class="hotspot" data-object="bookshelf" aria-label="A bookshelf"
+                style="--x: 189; --y: 32; --w: 24; --h: 11;"></button>
+
             <button class="hotspot" data-object="cat" aria-label="Aza's cat"
                 style="--x: 162; --y: 33; --w: 15; --h: 15;"></button>
 
-            <button class="hotspot" data-object="painting" aria-label="A painting of a Steller's Jay"
+            <button class="hotspot" data-object="painting" aria-label="A painting of a Steller's jay"
                 style="--x: 76; --y: 14; --w: 18; --h: 18;"></button>
 
             <button class="hotspot" data-object="pearls" aria-label="A string of pearls plant"
@@ -48,8 +53,9 @@
             <button class="hotspot" data-object="diploma" aria-label="Aza's diploma"
                 style="--x: 15; --y: 46; --w: 15; --h: 12;"></button>
         </main>
-        <section class="dialog" aria-live="polite">
-            <p class="dialog-text">Hello! My name is Aza. Welcome to my room!</p>
+        <section class="dialog">
+            <p class="dialog-text" aria-hidden="true"><span class="dialog-shown"></span><span class="dialog-rest"></span></p>
+            <p class="sr-only" aria-live="polite"></p>
             <span class="dialog-arrow" aria-hidden="true">▼</span>
         </section>
     </div>

@@ -91,6 +91,11 @@ body {
     animation: blink 1s steps(1) infinite;
 }
 
+/* the not-yet-typed part of the line: takes up space but can't be seen */
+.dialog-rest {
+    visibility: hidden;
+}
+
 @keyframes blink {
     50% {
         opacity: 0;
@@ -101,4 +106,14 @@ body {
 .stage {
     width: min(100%, 1024px, calc((100dvh - 180px) * 16 / 9));
     margin: 0 auto;
+}
+
+/* hidden on screen, still read by screen readers */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
 }
