@@ -12,20 +12,6 @@
     --tumbleweed: #e0ae92;
     --apricot: #eabc74;
     --bisque: #ffe6c6;
-
-    /* 98.css reads these names, so they point at the palette */
-    --surface: var(--bisque);
-    --button-face: var(--bisque);
-    --button-highlight: #ffffff;
-    /* white bevel edge, the only non-palette color */
-    --button-shadow: var(--coyote);
-    --window-frame: var(--elderberry);
-    --dialog-blue: var(--elderberry);
-    --dialog-blue-light: var(--old-lavender);
-    --dialog-gray: var(--puddle-jumper);
-    --dialog-gray-light: var(--gremlin);
-    --link-blue: var(--old-mauve);
-    --text-color: var(--elderberry);
 }
 
 
@@ -69,7 +55,7 @@ body {
     height: calc(var(--h) / 144 * 100%);
     padding: 0;
     background: transparent;
-    border: 2px dashed vaar(--apricot);
+    border: 2px dashed var(--apricot);
     /* temporary so it's visible (replace w/focus-visible later) */
     cursor: pointer;
     /* Windows 98 */
@@ -92,7 +78,7 @@ body {
     padding: 20px 24px;
     background: var(--bisque);
     color: var(--elderberry);
-    border: 4px solid (--elderberry);
+    border: 4px solid var(--elderberry);
     box-shadow: inset 0 0 0 4px var(--bisque), inset 0 0 0 7px var(--rialto);
     font-size: 16px;
     /* Press Start 2P stays crisp at multiples of 8 */
@@ -169,15 +155,19 @@ body {
     /* 98.css's font */
 }
 
+/* Column holds and arranges all desktop icons */
 .desktop-icons {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
     padding: 16px;
+    flex-wrap: wrap;
+    max-height: calc(100dvh - 60px);
+    /* leaves room for the taskbar */
 }
 
-/* desktop icons: plain text for now */
+/* individual desktop icons: plain text for now */
 .desktop-icon {
     min-width: 0;
     box-shadow: none;
@@ -197,27 +187,71 @@ body {
     overflow: auto;
 }
 
-/* gray taskbar along the bottom*/
+/* Windows 98 pieces, recolored with the palette */
+
+/* window frame: bisque, with a white/coyote/elderberry 3D bevel */
+.desktop .window {
+    background: var(--bisque);
+    box-shadow:
+        inset -1px -1px var(--elderberry),
+        /* outer dark edge, bottom and right */
+        inset 1px 1px var(--bisque),
+        /* outer light edge, top and left */
+        inset -2px -2px var(--coyote),
+        /* inner shadow */
+        inset 2px 2px #ffffff;
+    /* inner highlight */
+}
+
+/* title bar: elderberry fading to old lavender */
+.desktop .title-bar {
+    background: linear-gradient(90deg, var(--elderberry), var(--old-lavender));
+}
+
+/* buttons in windows and the taskbar: bisque with a raised bevel */
+.desktop .window button,
+.taskbar button {
+    background-color: var(--bisque);
+    box-shadow:
+        inset -1px -1px var(--elderberry),
+        inset 1px 1px #ffffff,
+        inset -2px -2px var(--coyote),
+        inset 2px 2px var(--bisque);
+}
+
+/* pressed: the bevel flips, so the button looks pushed in */
+.desktop .window button:active,
+.taskbar button:active {
+    box-shadow:
+        inset -1px -1px #ffffff,
+        inset 1px 1px var(--elderberry),
+        inset -2px -2px var(--bisque),
+        inset 2px 2px var(--coyote);
+}
+
+/* bisque taskbar along the bottom*/
 .taskbar {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
     padding: 3px;
-    background: var(--surface);
-    box-shadow: inset 0 1px var(--bisque);
+    background: var(--bisque);
+    box-shadow: inset 0 1px #ffffff;
 }
 
 /* Start Button */
 .start-button {
     font-weight: bold;
-    background: var(--surface);
-}
+   }
 
 /* Start Menu:pops up */
-.start-menu {
-    position: absolute;
+.desktop .start-menu {
+    top: auto;
     left: 3px;
     bottom: 36px;
+    transform: none;
+    width: auto;
+    max-height: none;
     padding: 4px;
 }

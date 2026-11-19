@@ -8,7 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/98.css@0.1.21/dist/98.css"> <!-- Windows98 stylesheet from jdan.github.io/98.css -->
+    <link rel="stylesheet" href="https://unpkg.com/98.css@0.1.21/dist/98.css">
+    <!-- Windows98 stylesheet from jdan.github.io/98.css -->
     <link rel="stylesheet" href="css/style.css">
     <script src="js/room.js" defer></script>
 </head>
@@ -62,39 +63,124 @@
         </section>
     </div>
     <!-- Boot Screen -->
-<div class="boot" hidden>
-    <p>Connecting…</p>
-</div>
-
-<!-- the computer's desktop, full screen -->
-<div class="desktop" hidden>
-    <!-- Icons -->
-    <div class="desktop-icons">
-        <button class="desktop-icon" data-window="perch">Perch</button>
-        <button class="desktop-icon" data-window="diogo">Diogo Shoes</button>
-        <button class="desktop-icon" data-window="helpdesk">Help Desk</button>
+    <div class="boot" hidden>
+        <p>Connecting…</p>
     </div>
 
-    <div class="window" id="window-perch" hidden>
-        <div class="title-bar">
-            <div class="title-bar-text">Perch</div>
-            <div class="title-bar-controls">
-                <button aria-label="Close" class="close-window"></button>
+    <!-- the computer's desktop, full screen -->
+    <div class="desktop" hidden>
+        <!-- Icons -->
+        <div class="desktop-icons">
+            <button class="desktop-icon" data-window="perch">Perch</button>
+            <button class="desktop-icon" data-window="diogo">Diogo Shoes</button>
+            <button class="desktop-icon" data-window="helpdesk">Help Desk</button>
+            <button class="desktop-icon" data-window="about">About_Me.txt</button>
+            <button class="desktop-icon" data-window="resume">Resume.pdf</button>
+            <button class="desktop-icon" data-window="contact">Contact</button>
+            <button class="desktop-icon" data-window="recycle">Recycle Bin</button>
+        </div>
+
+        <!-- Perch Window -->
+        <div class="window" id="window-perch" hidden>
+            <div class="title-bar">
+                <div class="title-bar-text">Perch</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" class="close-window"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <p>Perch project details go here.</p>
             </div>
         </div>
-        <div class="window-body">
-            <p>Perch project details go here.</p>
+
+        <!-- Diogo Shoes -->
+        <div class="window" id="window-diogo" hidden>
+            <div class="title-bar">
+                <div class="title-bar-text">Diogo Shoes</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" class="close-window"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <p>Diogo project details go here.</p>
+            </div>
+        </div>
+
+        <!-- Help Desk -->
+        <div class="window" id="window-helpdesk" hidden>
+            <div class="title-bar">
+                <div class="title-bar-text">Help Desk</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" class="close-window"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <p>Help Desk project details go here.</p>
+            </div>
+        </div>
+
+        <!-- About Me -->
+        <div class="window" id="window-about" hidden>
+            <div class="title-bar">
+                <div class="title-bar-text">About_Me.txt - Notepad</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" class="close-window"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <p>About Me project details go here.</p>
+            </div>
+        </div>
+
+        <!-- Resume -->
+        <div class="window" id="window-resume" hidden>
+            <div class="title-bar">
+                <div class="title-bar-text">Resume.pdf</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" class="close-window"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <p>Resume project details go here.</p>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="window" id="window-contact" hidden>
+            <div class="title-bar">
+                <div class="title-bar-text">Contact</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" class="close-window"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <p>Contact project details go here.</p>
+            </div>
+        </div>
+
+        <!-- Recycle Bin -->
+        <div class="window" id="window-recycle" hidden>
+            <div class="title-bar">
+                <div class="title-bar-text">Recycle Bin</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" class="close-window"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <p>Recycle Bin project details go here.</p>
+            </div>
+        </div>
+
+        <!-- Start Menu -->
+        <div class="start-menu window" hidden>
+            <button class="shutdown-button">Shut Down...</button>
+        </div>
+
+        <!-- Taskbar -->
+        <div class="taskbar">
+            <button class="start-button" aria-expanded="false">Start</button>
         </div>
     </div>
-<!-- Start Menu -->
-    <div class="start-menu window" hidden>
-    <button class="shutdown-button">Shut Down...</button>
-</div>
-<!-- Taskbar -->
-    <div class="taskbar">
-        <button class="start-button" aria-expanded="false">Start</button>
-    </div>
-</div>
 </body>
 
 </html>

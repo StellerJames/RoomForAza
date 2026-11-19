@@ -43,7 +43,7 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion:reduce)").matche
 let typingTimer = null;
 let fullText = "";
 
-//Shows each line of the dilog box, one letter at a time.
+//Shows each line of the dialog box, one letter at a time.
 function say(text) {
     clearInterval(typingTimer); //stop at any line that's still typing
     fullText = text;
@@ -136,3 +136,31 @@ startButton.addEventListener("click", () => {
     startButton.setAttribute("aria-expanded", String(!startMenu.hidden));
 });
 document.querySelector(".shutdown-button").addEventListener("click", shutDown);
+
+// Windows: Click icon to open window. Click the "X" to close it.
+let topLayer = 10;   // the newest window sits on top
+
+function openWindow(icon) {
+    const win = document.getElementById("window-" + icon.dataset.window);
+    if (!win) return;                       // no window for this icon yet
+    win.hidden = false;
+    topLayer++;
+    win.style.zIndex = topLayer;            // bring it to the front
+    win.querySelector(".close-window").focus();
+}
+
+function closeWindow(closeButton) {
+    const win = closeButton.closest(".window");
+    win.hidden = true;
+    // send keyboard focus back to the icon that opened this window
+    const name = win.id.replace("window-", "");
+    document.querySelector(`.desktop-icon[data-window="${name}"]`).focus();
+}
+
+document.querySelectorAll(".desktop-icon").forEach((icon) => {
+    icon.addEventListener("click", () => openWindow(icon));
+});
+
+document.querySelectorAll(".close-window").forEach((button) => {
+    button.addEventListener("click", () => closeWindow(button));
+});
