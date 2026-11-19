@@ -12,36 +12,47 @@
 </head>
 
 <body>
-    <main class="room">
-        <img class="room-bg" src="assets/room-static.png"
-            alt="A cozy pixel art living room with a desk, a sofa, a sleeping cat, plants, and wall art">
+    <div class="stage">
+        <main class="room">
+            <img class="room-bg" src="assets/room-static.png"
+                alt="A cozy pixel art living room with a desk, a sofa, a sleeping cat, plants, and wall art">
 
-        <img class="sprite" src="assets/character-idle.gif" alt="" style="--x: 78; --y: 71; --w: 13;">
+            <img class="sprite" src="assets/character-idle.gif" alt="" style="--x: 78; --y: 71; --w: 13;">
 
-        <img class="sprite" src="assets/cat-sleep.gif" alt="" style="--x: 164; --y: 34; --w: 11;">
+            <img class="sprite" src="assets/cat-sleep.gif" alt="" style="--x: 164; --y: 34; --w: 11;">
 
-        <img class="sprite" src="assets/mug-steam.gif" alt="" style="--x: 14; --y: 63; --w: 7;">
+            <img class="sprite" src="assets/mug-steam.gif" alt="" style="--x: 14; --y: 63; --w: 7;">
 
-        <button class="hotspot" data-object="character" aria-label="Aza"
-            style="--x: 78; --y: 71; --w: 13; --h: 19;"></button>
+            <button class="hotspot" data-object="character" aria-label="Aza"
+                style="--x: 78; --y: 71; --w: 13; --h: 19;"></button>
 
-        <button class="hotspot" data-object="computer" aria-label="Aza's Computer"
-            style="--x: 22; --y: 58; --w: 18; --h: 18;"></button>
+            <button class="hotspot" data-object="computer" aria-label="Aza's Computer"
+                style="--x: 22; --y: 58; --w: 18; --h: 18;"></button>
 
-        <button class="hotspot" data-object="cat" aria-label="Aza's cat"
-            style="--x: 162; --y: 33; --w: 15; --h: 15;"></button>
+            <button class="hotspot" data-object="cat" aria-label="Aza's cat"
+                style="--x: 162; --y: 33; --w: 15; --h: 15;"></button>
 
-        <button class="hotspot" data-object="painting" aria-label="A painting of a Steller's Jay"
-            style="--x: 76; --y: 14; --w: 18; --h: 18;"></button>
+            <button class="hotspot" data-object="painting" aria-label="A painting of a Steller's Jay"
+                style="--x: 76; --y: 14; --w: 18; --h: 18;"></button>
+
+            <button class="hotspot" data-object="pearls" aria-label="A string of pearls plant"
+                style="--x: 72; --y: 33; --w: 17; --h: 17;"></button>
+
+            <button class="hotspot" data-object="syngonium" aria-label="A syngonium plant"
+                style="--x: 195; --y: 44; --w: 19; --h: 28;"></button>
 
 
-        <button class="hotspot" data-object="cactus" aria-label="A cowboy cactus"
-            style="--x: 128; --y: 12; --w: 17; --h: 37;"></button>
+            <button class="hotspot" data-object="cactus" aria-label="A cowboy cactus"
+                style="--x: 128; --y: 12; --w: 17; --h: 37;"></button>
 
-        <button class="hotspot" data-object="diploma" aria-label="Aza's diploma"
-            style="--x: 15; --y: 46; --w: 15; --h: 12;"></button>
-
-    </main>
+            <button class="hotspot" data-object="diploma" aria-label="Aza's diploma"
+                style="--x: 15; --y: 46; --w: 15; --h: 12;"></button>
+        </main>
+        <section class="dialog" aria-live="polite">
+            <p class="dialog-text">Hello! My name is Aza. Welcome to my room!</p>
+            <span class="dialog-arrow" aria-hidden="true">▼</span>
+        </section>
+    </div>
 </body>
 
 </html>
