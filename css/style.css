@@ -1,5 +1,9 @@
 :root {
     /* Anthill palette */
+
+    /*Add to README later 
+    source: https://lospec.com/palette-list/anthill
+    credit: Jude Buffum*/
     --elderberry: #292449;
     --old-mauve: #6e3850;
     --rialto: #8d4e59;
@@ -166,16 +170,29 @@ body {
     /* leaves room for the taskbar */
 }
 
-/* individual desktop icons: plain text for now */
+/* desktop icons: pixel picture above a label */
 .desktop-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 88px;
     min-width: 0;
+    min-height: 0;
     box-shadow: none;
     background: transparent;
     color: var(--bisque);
     padding: 4px;
 }
 
-/* windows open centered + scroll for content outside of initial screen */
+.desktop-icon img {
+    width: 64px;
+    height: 64px;
+    image-rendering: pixelated;
+}
+
+/* windows open centered*/
+/* scroll for content outside of initial screen */
 .desktop .window {
     position: absolute;
     top: 48px;
@@ -188,7 +205,7 @@ body {
 
 /* Windows 98 pieces, recolored with the palette */
 
-/* window frame: bisque, with a white/coyote/elderberry 3D bevel */
+/* window frame */
 .desktop .window {
     background: var(--bisque);
     box-shadow:
@@ -202,12 +219,13 @@ body {
     /* inner highlight */
 }
 
-/* title bar: elderberry fading to old lavender */
+/* title bar*/
+/* elderberry fading to old lavender, similar to old 98 style */
 .desktop .title-bar {
     background: linear-gradient(90deg, var(--elderberry), var(--old-lavender));
 }
 
-/* buttons in windows and the taskbar: bisque with a raised bevel */
+/* buttons inside windows and the taskbar */
 .desktop .window button,
 .taskbar button {
     background-color: var(--bisque);
@@ -228,7 +246,7 @@ body {
         inset 2px 2px var(--coyote);
 }
 
-/* bisque taskbar along the bottom*/
+/* Taskbar */
 .taskbar {
     position: absolute;
     left: 0;
@@ -291,26 +309,4 @@ body {
     padding: 8px;
     max-height: 300px;
     overflow-y: auto;
-}
-
-/* desktop icons: pixel picture above a label */
-.desktop-icon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    width: 88px;
-    min-width: 0;
-    min-height: 0;
-    box-shadow: none;
-    background: transparent;
-    color: var(--bisque);
-    padding: 4px;
-}
-
-/* 32px art shown at 64px, kept crisp */
-.desktop-icon img {
-    width: 64px;
-    height: 64px;
-    image-rendering: pixelated;
 }
