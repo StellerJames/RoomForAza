@@ -98,10 +98,12 @@ document.querySelectorAll(".hotspot").forEach((button) => {
         if (name === "character") {
             bobbing();
         } else if (name === "computer") {
+            if (musicOn) musicFadeOut(1.5); // music fades during bootup
             setTimeout(bootUp, 1500);
         }
     });
 });
+
 
 // Greet visitor on open
 say(greeting);
@@ -127,6 +129,7 @@ function shutDown() {
     desktop.hidden = true;
     computerButton.focus(); // keyboard users land back on the computer
     say("You've logged off. Click the computer again to log back on.");
+    if (musicOn) musicFadeIn(2.5); // gently back in, only if it was on
 }
 
 // Start toggles menu. Log Off goes back to the room.
@@ -167,4 +170,116 @@ document.querySelectorAll(".close-window").forEach((button) => {
 // Close rotation hint
 document.querySelector(".rotate-hint-close").addEventListener("click", () => {
     document.querySelector(".rotate-hint").hidden = true;
+});
+
+//Music: Toggles on/off
+const tracks = [
+    "assets/lofi1.mp3",
+    "assets/lofi2.mp3",
+    "assets/lofi3.mp3"
+];
+
+const MUSIC_VOLUME = 0.25; // 0 = silent, 1 = full volume
+const CROSSFADE = 4;       // seconds two songs overlap
+const musicButton = document.querySelector(".music-toggle");
+let musicOn = false;
+let audioCtx = null;   // Web Audio
+let musicGain = null;  // master volume: on/off and computer fades
+let players = [];      // one audio element + its own volume per track
+let current = -1;      // which track is playing (-1 = none yet)
+let switching = false; // true while two tracks crossfade
+let pauseTimer = null;
+
+// Smoothly slides a volume control to `target` over `seconds`
+function ramp(gainNode, target, seconds) {
+    const now = audioCtx.currentTime;
+    gainNode.gain.cancelScheduledValues(now);
+    gainNode.gain.setValueAtTime(gainNode.gain.value, now);
+    gainNode.gain.linearRampToValueAtTime(target, now + seconds);
+}
+
+// Builds the players the first time music is turned on.
+// Each track gets its own volume.
+function setUpAudio() {
+    if (audioCtx) return;
+    audioCtx = new AudioContext();
+    musicGain = audioCtx.createGain();
+    musicGain.gain.value = 0;
+    musicGain.connect(audioCtx.destination);
+
+    players = tracks.map((src) => {
+        const audio = new Audio(src);
+        audio.preload = "none"; // download only when it plays
+        const gain = audioCtx.createGain();
+        gain.gain.value = 0;
+        audioCtx.createMediaElementSource(audio).connect(gain).connect(musicGain);
+
+        // near the end of the current song, start crossfading to the next
+        audio.addEventListener("timeupdate", () => {
+            const isCurrent = players[current] && players[current].audio === audio;
+            if (isCurrent && !switching && audio.duration - audio.currentTime < CROSSFADE) {
+                nextTrack();
+            }
+        });
+        return { audio, gain };
+    });
+}
+
+// Starts a track from the beginning and fades it up
+function startTrack(i) {
+    current = i;
+    const p = players[i];
+    p.audio.currentTime = 0;
+    p.audio.play().catch(() => { });
+    ramp(p.gain, 1, CROSSFADE);
+}
+
+// Random next track, never the same one twice in a row
+function nextTrack() {
+    switching = true;
+    const old = players[current];
+    ramp(old.gain, 0, CROSSFADE);
+    setTimeout(() => {
+        old.audio.pause();
+        switching = false;
+    }, CROSSFADE * 1000);
+
+    let next;
+    do {
+        next = Math.floor(Math.random() * tracks.length);
+    } while (next === current);
+    startTrack(next);
+}
+
+function musicFadeIn(seconds) {
+    setUpAudio();
+    clearTimeout(pauseTimer); // cancel a pause from a fade-out still in progress
+    audioCtx.resume();
+    if (current === -1) {
+        startTrack(Math.floor(Math.random() * tracks.length)); // first song is random too
+    } else {
+        players[current].audio.play().catch(() => { }); // pick up where it left off
+    }
+    ramp(musicGain, MUSIC_VOLUME, seconds);
+}
+
+function musicFadeOut(seconds) {
+    if (!audioCtx) return; // music never started
+    ramp(musicGain, 0, seconds);
+    clearTimeout(pauseTimer);
+    pauseTimer = setTimeout(() => {
+        players.forEach((p) => p.audio.pause()); // pause once silent
+    }, seconds * 1000);
+}
+
+// On/off button
+musicButton.addEventListener("click", () => {
+    musicOn = !musicOn;
+    musicButton.setAttribute("aria-pressed", String(musicOn));
+    musicButton.textContent = musicOn ? "♪ Music: On" : "♪ Music: Off";
+    if (musicOn) {
+        musicFadeIn(1.5);
+    } else {
+        musicFadeOut(1);
+    }
 });
