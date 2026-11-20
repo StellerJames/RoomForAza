@@ -58,8 +58,10 @@ body {
     height: calc(var(--h) / 144 * 100%);
     padding: 0;
     background: transparent;
-    border: 2px dashed var(--apricot);
-    /* temporary so it's visible (replace w/focus-visible later) */
+    border: none;
+    border-radius: 6px;
+    /* softly rounded corners */
+    transition: background-color 0.15s;
     cursor: pointer;
     /* Windows 98 */
     min-width: 0;
@@ -67,6 +69,23 @@ body {
     min-height: 0;
     box-shadow: none;
     /* ...and a 3D bevel */
+}
+
+/* semi-transparent button appears over interactive objects on hover */
+.hotspot:hover,
+.hotspot:focus-visible {
+    background-color: color-mix(in srgb, var(--bisque) 35%, transparent);
+}
+
+/* Outline for keyboard users */
+.hotspot:focus-visible {
+    outline: 2px solid var(--elderberry);
+    outline-offset: 1px;
+}
+
+/*remove 98.css dotted outline that normally appears on click */
+.hotspot:focus:not(:focus-visible) {
+    outline: none;
 }
 
 /* Stylized pixel dialog box underneath the room */
@@ -309,4 +328,11 @@ body {
     padding: 8px;
     max-height: 300px;
     overflow-y: auto;
+}
+
+/* tall phone screenshot */
+.project-shot.tall {
+    width: auto;
+    max-height: 360px;
+    margin: 0 auto 8px;
 }

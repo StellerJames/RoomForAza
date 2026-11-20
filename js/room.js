@@ -15,7 +15,7 @@ const dialog = {
     syngonium: ["A bushy Syngonium batik plant. One of the lower leaves has a suspiciously tiny bite mark on it..."],
     bookshelf: ["Mostly books about visual art and houseplants."],
     minishelf: ["A small shelf of well-loved books. A dog-eared copy of Eloquent JavaScript sits in the middle."],
-    diploma: ["It’s Aza’s BFA in art education from Weber State University!"]
+    diploma: ["It’s Aza’s Bachelor of Art Education from WSU!"]
 };
 
 //Page Elements
@@ -48,7 +48,7 @@ let fullText = "";
 function say(text) {
     clearInterval(typingTimer); //stop at any line that's still typing
     fullText = text;
-    dialogLive.textContent = text;  //screen readers get full line instantly
+    dialogLive.textContent = text; //screen readers get full line instantly
 
     if (reduceMotion) {
         shownText.textContent = text;
@@ -58,11 +58,11 @@ function say(text) {
 
     let shown = 0;
     shownText.textContent = "";
-    restText.textContent = text;          // whole line laid out, invisible
+    restText.textContent = text; // whole line laid out, invisible
     typingTimer = setInterval(() => {
         shown++;
-        shownText.textContent = text.slice(0, shown);   // typed so far
-        restText.textContent = text.slice(shown);       // everything after
+        shownText.textContent = text.slice(0, shown); // typed so far
+        restText.textContent = text.slice(shown); // everything after
         if (shown >= text.length) {
             clearInterval(typingTimer);
         }
@@ -111,8 +111,8 @@ say(greeting);
 // Shows the boot screen with the dial-up sound. Desktop then opens.
 function bootUp() {
     boot.hidden = false;
-    dialupSound.currentTime = 0;              // start the sound from the beginning
-    dialupSound.play().catch(() => { });       // if a browser blocks sound, boot anyway
+    dialupSound.currentTime = 0; // start the sound from the beginning
+    dialupSound.play().catch(() => { }); // if a browser blocks sound, boot anyway
 
     setTimeout(() => {
         boot.hidden = true;
@@ -128,10 +128,10 @@ function shutDown() {
     startButton.setAttribute("aria-expanded", "false");
     desktop.hidden = true;
     computerButton.focus(); // keyboard users land back on the computer
-    say("Aza's computer is off. Click it anytime to log back on.");
+    say("You've logged off. Click the computer again to log back on.");
 }
 
-// Start toggles menu. Shut Down goes back to the room.
+// Start toggles menu. Log Off goes back to the room.
 startButton.addEventListener("click", () => {
     startMenu.hidden = !startMenu.hidden;
     startButton.setAttribute("aria-expanded", String(!startMenu.hidden));
@@ -143,10 +143,10 @@ let topLayer = 10;   // the newest window sits on top
 
 function openWindow(icon) {
     const win = document.getElementById("window-" + icon.dataset.window);
-    if (!win) return;                       // no window for this icon yet
+    if (!win) return; // no window for this icon yet
     win.hidden = false;
     topLayer++;
-    win.style.zIndex = topLayer;            // bring it to the front
+    win.style.zIndex = topLayer; // bring it to the front
     win.querySelector(".close-window").focus();
 }
 
