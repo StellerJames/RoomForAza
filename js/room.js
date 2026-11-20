@@ -4,7 +4,7 @@ const greeting = "Hello! My name is Aza. Welcome to my room!";
 //Dialog lines for each object within room
 const dialog = {
     character: [
-        "I'm a software development student and I enjoy design and accessibility in programming.",
+        "I'm a software development student and I enjoy accessibility and design in programming.",
         "If you'd like to see some of my work, take a look at my computer!"
     ],
     cat: ["*purrs*", "*mrrp*"],
@@ -14,8 +14,7 @@ const dialog = {
     pearls: ["A stylish String of Pearls sits near the window. It looks like it was placed here purely for the vibes."],
     syngonium: ["A bushy Syngonium batik plant. One of the lower leaves has a suspiciously tiny bite mark on it..."],
     bookshelf: ["Mostly books about visual art and houseplants."],
-    minishelf: [
-        "A small shelf of well-loved books. A dog-eared copy of Eloquent JavaScript sits in the middle."],
+    minishelf: ["A small shelf of well-loved books. A dog-eared copy of Eloquent JavaScript sits in the middle."],
     diploma: ["It’s Aza’s BFA in art education from Weber State University!"]
 };
 

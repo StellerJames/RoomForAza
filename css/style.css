@@ -14,7 +14,6 @@
     --bisque: #ffe6c6;
 }
 
-
 /* Elderberry page behind the room, no default margin */
 body {
     margin: 0;
@@ -243,7 +242,7 @@ body {
 /* Start Button */
 .start-button {
     font-weight: bold;
-   }
+}
 
 /* Start Menu:pops up */
 .desktop .start-menu {
@@ -254,4 +253,64 @@ body {
     width: auto;
     max-height: none;
     padding: 4px;
+}
+
+/* screenshots fill the window's width, with a thin frame */
+.project-shot {
+    display: block;
+    width: 100%;
+    border: 2px solid var(--elderberry);
+    margin-bottom: 8px;
+}
+
+/* Windows 98 button (hyperlink)*/
+.link-button {
+    display: inline-block;
+    padding: 6px 12px;
+    background: var(--bisque);
+    color: var(--elderberry);
+    text-decoration: none;
+    box-shadow:
+        inset -1px -1px var(--elderberry),
+        inset 1px 1px #ffffff,
+        inset -2px -2px var(--coyote),
+        inset 2px 2px var(--bisque);
+}
+
+.link-button:active {
+    box-shadow:
+        inset -1px -1px #ffffff,
+        inset 1px 1px var(--elderberry),
+        inset -2px -2px var(--bisque),
+        inset 2px 2px var(--coyote);
+}
+
+.notepad {
+    background-color: #ffffff;
+    box-shadow: inset -1px -1px var(--bisque), inset 1px 1px var(--elderberry);
+    padding: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* desktop icons: pixel picture above a label */
+.desktop-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 88px;
+    min-width: 0;
+    min-height: 0;
+    box-shadow: none;
+    background: transparent;
+    color: var(--bisque);
+    padding: 4px;
+}
+
+/* 32px art shown at 64px, kept crisp */
+.desktop-icon img {
+    width: 64px;
+    height: 64px;
+    image-rendering: pixelated;
 }

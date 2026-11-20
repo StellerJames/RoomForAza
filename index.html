@@ -73,13 +73,40 @@
     <div class="desktop" hidden>
         <!-- Icons -->
         <div class="desktop-icons">
-            <button class="desktop-icon" data-window="perch">Perch</button>
-            <button class="desktop-icon" data-window="diogo">Diogo Shoes</button>
-            <button class="desktop-icon" data-window="helpdesk">Help Desk</button>
-            <button class="desktop-icon" data-window="about">About_Me.txt</button>
-            <button class="desktop-icon" data-window="resume">Resume.pdf</button>
-            <button class="desktop-icon" data-window="contact">Contact</button>
-            <button class="desktop-icon" data-window="recycle">Recycle Bin</button>
+            <button class="desktop-icon" data-window="perch">
+                <img src="assets/icons/perch.png" alt="">
+                <span>Perch</span>
+            </button>
+
+            <button class="desktop-icon" data-window="diogo">
+                <img src="assets/icons/diogo.png" alt="">
+                <span>Diogo Shoes</span>
+            </button>
+
+            <button class="desktop-icon" data-window="helpdesk">
+                <img src="assets/icons/helpdesk.png" alt="">
+                <span>Help Desk</span>
+            </button>
+
+            <button class="desktop-icon" data-window="about">
+                <img src="assets/icons/about.png" alt="">
+                <span>About_Me.txt</span>
+            </button>
+
+            <button class="desktop-icon" data-window="resume">
+                <img src="assets/icons/resume.png" alt="">
+                <span>Resume.pdf</span>
+            </button>
+
+            <button class="desktop-icon" data-window="contact">
+                <img src="assets/icons/contact.png" alt="">
+                <span>Contact</span>
+            </button>
+
+            <button class="desktop-icon" data-window="recycle">
+                <img src="assets/icons/recycle.png" alt="">
+                <span>Recycle Bin</span>
+            </button>            
         </div>
 
         <!-- Perch Window -->
@@ -91,7 +118,24 @@
                 </div>
             </div>
             <div class="window-body">
-                <p>Perch project details go here.</p>
+                <img class="project-shot" src="assets/shots/perch.png"
+                    alt="Screenshot of Perch's bird identification page">
+                <p>A casual backyard birding companion for Utah birders:<br>ID a bird by what you saw, log your
+                    sightings,
+                    and quiz yourself on species.</p>
+                <h4>What I built</h4>
+                <ul>
+                    <li>A step-by-step Bird ID tool that suggests likely matches based on the color, size,
+                        habitat,region and season you saw.</li>
+                    <li>Personal Life, Daily and Nemesis lists: the Life List fills in from your Daily List, and the
+                        Nemesis List tracks the birds you’re still on the lookout for.</li>
+                    <li>A 10-question bird quiz with scoring, plus bird profiles that pronounce common and Latin names
+                        aloud.</li>
+                    <li>Passwords hashed with ASP.NET's PasswordHasher.</li>
+                </ul>
+                <p><strong>Tech:</strong> C#, Blazor (.NET 10), Dapper, MySQL</p>
+                <a class="link-button" href="https://github.com/StellerJames/Perch" target="_blank" rel="noopener">View
+                    on GitHub</a>
             </div>
         </div>
 
@@ -104,7 +148,24 @@
                 </div>
             </div>
             <div class="window-body">
-                <p>Diogo project details go here.</p>
+                <img class="project-shot" src="assets/shots/diogo.png"
+                    alt="Screenshot of the Diogo Shoes product catalog with category filters">
+                <p>A responsive e-commerce site for a fictional shoe store called "Diogo Shoes".<br>Site was built with
+                    plain HTML, CSS, and JS, no added frameworks</p>
+                <h4>What I built</h4>
+                <ul>
+                    <li>A product catalog with category filters, search and sorting.</li>
+                    <li>An online shopping cart that remembers what a customer had picked out, even if they leave the
+                        site and return. </li>
+                    <li>Includes a checkout process that handles promo codes and free shipping as well.</li>
+                    <li>A user-friendly payment form that automatically formats card numbers as you type them,
+                        recognizes the card brand, and catches any typos before you can complete checkout.</li>
+                    <li>It’s built with accessibility in mind: supporting screen readers, keyboard navigation, and
+                        reduced-motion preferences.</li>
+                </ul>
+                <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+                <a class="link-button" href="https://github.com/StellerJames/DiogoShoesRWD" target="_blank"
+                    rel="noopener">View on GitHub</a>
             </div>
         </div>
 
@@ -117,20 +178,46 @@
                 </div>
             </div>
             <div class="window-body">
-                <p>Help Desk project details go here.</p>
+                <img class="project-shot" src="assets/shots/helpdesk.png"
+                    alt="Screenshot of Swagger listing the Help Desk ticket endpoints">
+                <p>A REST API for creating and tracking IT service tickets through completion, from “New” to “Closed”.
+                </p>
+                <h4>What I built</h4>
+                <ul>
+                    <li>Endpoints to list, view, create, update and delete tickets, with validation on ticket status.
+                    </li>
+                    <li>Moved tickets into a MySQL database so they’re saved permanently and protected from common
+                        attacks like SQL injection.</li>
+                    <li>Kept database credentials out of source control with User Secrets, and added logging and Swagger
+                        for testing.</li>
+                    <li>Built a Blazor web app for the tickets with pages to list, view, create and update tickets.</li>
+                </ul>
+                <p><strong>Tech:</strong> C#, ASP.NET Core, MySQL, Dapper, Swagger, Blazor</p>
+                <a class="link-button" href="https://github.com/StellerJames/ServiceTicketAPI" target="_blank"
+                    rel="noopener">View on GitHub</a>
             </div>
         </div>
 
         <!-- About Me -->
         <div class="window" id="window-about" hidden>
             <div class="title-bar">
-                <div class="title-bar-text">About_Me.txt - Notepad</div>
+                <div class="title-bar-text">About_Me.txt</div>
                 <div class="title-bar-controls">
                     <button aria-label="Close" class="close-window"></button>
                 </div>
             </div>
             <div class="window-body">
-                <p>About Me project details go here.</p>
+                <div class="notepad">
+                    <p>Hi, I'm Aza! ...</p>
+                    <p>My background is in art education, where I spent six years teaching students across a wide range
+                        of ages. That experience shaped how I approach software development today. I'm now learning to
+                        build full-stack web applications with C#, ASP.NET Core, Blazor, and MySQL. I’m especially
+                        interested in the design side of software, creating clean and accessible interfaces. I am
+                        interested in learning about accessibility features like adding ARIA labels, checking color
+                        contrast for color blindness, and making sure screen readers can navigate a page effectively.
+                        When I’m not coding, I enjoy hiking and birding, which is partly why I built Perch, my bird ID
+                        app.</p>
+                </div>
             </div>
         </div>
 
@@ -143,7 +230,8 @@
                 </div>
             </div>
             <div class="window-body">
-                <p>Resume project details go here.</p>
+                <p>My resume, last updated November 2026.</p>
+                <a class="link-button" href="assets/Aza-Resume.pdf" target="_blank" rel="noopener">Open resume (PDF)</a>
             </div>
         </div>
 
@@ -156,7 +244,12 @@
                 </div>
             </div>
             <div class="window-body">
-                <p>Contact project details go here.</p>
+                <p>Want to chat? Find me here:</p>
+                <ul>
+                    <li><a href="https://www.linkedin.com/in/azabrungardt/" target="_blank" rel="noopener">LinkedIn</a>
+                    </li>
+                    <li><a href="https://github.com/StellerJames" target="_blank" rel="noopener">GitHub</a></li>
+                </ul>
             </div>
         </div>
 
@@ -169,7 +262,11 @@
                 </div>
             </div>
             <div class="window-body">
-                <p>Recycle Bin project details go here.</p>
+                <ul class="trash">
+                    <li>perchLogo_final_final.svg</li>
+                    <li>helloWorld.html</li>
+                    <li>!important.txt</li>
+                </ul>
             </div>
         </div>
 
