@@ -3,16 +3,14 @@ const greeting = "Hello! My name is Aza. Welcome to my room!";
 
 //Dialog lines for each object within room
 const dialog = {
-    character: [
-        "I'm a software development student and I enjoy accessibility and design in programming.",
-        "If you'd like to see some of my work, take a look at my computer!"
-    ],
+    character: ["I'm a software development student and I enjoy accessibility and design in programming.",
+        "If you'd like to see some of my work, take a look at my computer!"],
     cat: ["*purrs*", "*mrrp*"],
     computer: ["Logging on to Aza's computer..."],
     painting: ["It's a painting of a Steller's jay! Unlike a real one, this one stays completely silent while Aza works."],
     cactus: ["A healthy-looking Cowboy Cactus. Its soil looks dry, just like it likes."],
-    pearls: ["A stylish String of Pearls sits near the window. It looks like it was placed here purely for the vibes."],
-    syngonium: ["A bushy Syngonium batik plant. One of the lower leaves has a suspiciously tiny bite mark on it..."],
+    pearls: ["A stylish String of Pearls plant sits near the window. It looks like it was placed here purely for the vibes."],
+    syngonium: ["A bushy Syngonium. One of the lower leaves has a tiny bite mark on it..."],
     bookshelf: ["Mostly books about visual art and houseplants."],
     minishelf: ["A small shelf of well-loved books. A dog-eared copy of Eloquent JavaScript sits in the middle."],
     diploma: ["It’s Aza’s Bachelor of Art Education from WSU!"]
@@ -164,4 +162,9 @@ document.querySelectorAll(".desktop-icon").forEach((icon) => {
 
 document.querySelectorAll(".close-window").forEach((button) => {
     button.addEventListener("click", () => closeWindow(button));
+});
+
+// Close rotation hint
+document.querySelector(".rotate-hint-close").addEventListener("click", () => {
+    document.querySelector(".rotate-hint").hidden = true;
 });
